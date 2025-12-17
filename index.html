@@ -185,9 +185,113 @@
             <li>✓ 自動レポーティング機能</li>
           </ul>
         </div>
-        <div style="background: #eef2f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 300px;">
-           <span style="color: #999;">Dashboard UI Mockup / Logic Preview</span>
-        </div>
+        <div id="demo" class="demoWrap">
+  <div class="demoLeft">
+    <div class="demoTop">
+      <div>
+        <div class="demoLabel">正当性スコア</div>
+        <div class="demoScore"><span id="totalScore">--</span><span class="demoScoreUnit">/100</span></div>
+      </div>
+      <button class="demoBtn" id="btnExport">JSON出力</button>
+    </div>
+
+    <div id="alerts" class="demoAlerts"></div>
+
+    <div class="demoSectionTitle">入力（議論ログの要約）</div>
+
+    <div class="demoGrid">
+      <label class="demoField">
+        <span>参加人数</span>
+        <input type="number" id="nPeople" min="2" value="6">
+      </label>
+
+      <label class="demoField">
+        <span>発言回数（合計）</span>
+        <input type="number" id="totalTurns" min="1" value="50">
+      </label>
+
+      <label class="demoField">
+        <span>最多発言者の比率（%）</span>
+        <input type="range" id="maxShare" min="10" max="95" value="55">
+        <div class="demoHint"><span id="maxShareLabel">55</span>%</div>
+      </label>
+
+      <label class="demoField">
+        <span>根拠資料リンク数</span>
+        <input type="number" id="evidenceCount" min="0" value="2">
+      </label>
+
+      <label class="demoField">
+        <span>選択肢の数</span>
+        <input type="number" id="optionsCount" min="1" value="2">
+      </label>
+
+      <label class="demoField">
+        <span>反対意見の記録数</span>
+        <input type="number" id="dissentCount" min="0" value="1">
+      </label>
+
+      <label class="demoField">
+        <span>意見変更・修正回数</span>
+        <input type="number" id="revisionCount" min="0" value="3">
+      </label>
+
+      <label class="demoField">
+        <span>結論の理由の文字数</span>
+        <input type="number" id="rationaleLen" min="0" value="180">
+      </label>
+    </div>
+
+    <div class="demoSectionTitle">シナリオ（例）</div>
+    <div class="demoScenarioRow">
+      <select id="scenario">
+        <option value="balanced">良い合意（バランス型）</option>
+        <option value="dominant">悪い合意（偏りが強い）</option>
+        <option value="thin">悪い合意（根拠・検討が薄い）</option>
+      </select>
+      <button class="demoBtn ghost" id="btnApply">適用</button>
+    </div>
+  </div>
+
+  <div class="demoRight">
+    <div class="demoCard">
+      <div class="demoCardTitle">指標スコア（4軸）</div>
+
+      <div class="barRow">
+        <div class="barLabel">参加</div>
+        <div class="barTrack"><div class="barFill" id="barP"></div></div>
+        <div class="barVal" id="valP">--</div>
+      </div>
+
+      <div class="barRow">
+        <div class="barLabel">情報</div>
+        <div class="barTrack"><div class="barFill" id="barI"></div></div>
+        <div class="barVal" id="valI">--</div>
+      </div>
+
+      <div class="barRow">
+        <div class="barLabel">検討</div>
+        <div class="barTrack"><div class="barFill" id="barD"></div></div>
+        <div class="barVal" id="valD">--</div>
+      </div>
+
+      <div class="barRow">
+        <div class="barLabel">透明</div>
+        <div class="barTrack"><div class="barFill" id="barT"></div></div>
+        <div class="barVal" id="valT">--</div>
+      </div>
+
+      <div class="demoNote">
+        ※本デモは「Python分析エンジン実装予定」の設計を、フロント側で再現した試作です。
+      </div>
+    </div>
+
+    <div class="demoCard">
+      <div class="demoCardTitle">フィードバック</div>
+      <ul id="feedback" class="demoList"></ul>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </section>
